@@ -4,25 +4,25 @@ import initialContacts from './contacts';
 export const WhatsappContext = createContext();
 
 const initialMessages = [
-    { id: 1, contactId: 1, texto: "¡Hola! ¿Cómo estas?", fecha: "8:30 a. m.", sentByMe: false },
-    { id: 2, contactId: 1, texto: "¡Todo bien! ¿Y vos?", fecha: "8:32 a. m.", sentByMe: true },
-    { id: 3, contactId: 1, texto: "Bien, estudiando un poco.", fecha: "8:33 a. m.", sentByMe: false },
-    { id: 4, contactId: 2, texto: "¡Salen hoy a la noche?", fecha: "5:00 p. m.", sentByMe: false },
-    { id: 5, contactId: 2, texto: "¡Holaaa! Sí, dale.", fecha: "5:05 p. m.", sentByMe: true },
+    { id: 1, contactId: 1, texto: "¡Hola! ¿Cómo estas?", fecha: "6:30 p. m.", sentByMe: false },
+    { id: 2, contactId: 1, texto: "¡Todo bien! ¿Y vos?", fecha: "6:32 p. m.", sentByMe: true },
+    { id: 3, contactId: 1, texto: "Bien, estudiando un poco.", fecha: "6:33 p. m.", sentByMe: false },
+    { id: 4, contactId: 2, texto: "¡Salen hoy a la noche?", fecha: "4:00 p. m.", sentByMe: false },
+    { id: 5, contactId: 2, texto: "¡Holaaa! Sí, dale.", fecha: "4:05 p. m.", sentByMe: true },
     { id: 6, contactId: 3, texto: "¿Te enteraste lo de ayer?", fecha: "3:45 p. m.", sentByMe: false },
-    { id: 7, contactId: 4, texto: "Hola, ¿pudieron avanzar?", fecha: "12:47 a. m.", sentByMe: false, senderId: 1 },
-    { id: 8, contactId: 4, texto: "Sí, yo ya armé los componentes. Me falta mucho todavia.", fecha: "12:50 a. m.", sentByMe: false, senderId: 2 },
-    { id: 9, contactId: 4, texto: "¡Buenísimo!", fecha: "11:28 p. m.", sentByMe: true },
+    { id: 7, contactId: 4, texto: "Hola, ¿pudieron avanzar?", fecha: "10:47 a. m.", sentByMe: false, senderId: 1 },
+    { id: 8, contactId: 4, texto: "Sí, yo ya armé los componentes. Me falta mucho todavia.", fecha: "10:50 a. m.", sentByMe: false, senderId: 2 },
+    { id: 9, contactId: 4, texto: "¡Buenísimo!", fecha: "11:28 a. m.", sentByMe: true },
     { id: 10, contactId: 5, texto: "¡Hola! ¿Viste el trabajo?", fecha: "10:35 a. m.", sentByMe: false },
     { id: 11, contactId: 5, texto: "Hola, sí lo vi, gracias.", fecha: "10:50 a. m.", sentByMe: true },
-    { id: 12, contactId: 6, texto: "¿Vamos a correr más tarde?", fecha: "5:00 p. m.", sentByMe: false },
-    { id: 13, contactId: 6, texto: "Dale, te aviso cuando me desocupe.", fecha: "5:05 p. m.", sentByMe: true },
-    { id: 14, contactId: 7, texto: "Che, ¿me pasas lo de ayer?", fecha: "7:00 a. m.", sentByMe: false },
-    { id: 15, contactId: 7, texto: "Ahora te lo mando.", fecha: "7:15 a. m.", sentByMe: true },
+    { id: 12, contactId: 6, texto: "¿Vamos a correr más tarde?", fecha: "10:00 a. m.", sentByMe: false },
+    { id: 13, contactId: 6, texto: "Dale, te aviso cuando me desocupe.", fecha: "10:05 a. m.", sentByMe: true },
+    { id: 14, contactId: 7, texto: "Che, ¿me pasas lo de ayer?", fecha: "9:00 a. m.", sentByMe: false },
+    { id: 15, contactId: 7, texto: "Ahora te lo mando.", fecha: "9:15 a. m.", sentByMe: true },
     { id: 16, contactId: 8, texto: "Te felicito por el título!! 🎉", fecha: "8:00 a. m.", sentByMe: false },
     { id: 17, contactId: 8, texto: "Muchas gracias!! Nos vemos el finde.", fecha: "8:30 a. m.", sentByMe: true },
-    { id: 18, contactId: 9, texto: "¿Vamos al cine, hoy a las 20?", fecha: "2:30 p. m.", sentByMe: false },
-    { id: 19, contactId: 9, texto: "Si, te busco.", fecha: "2:45 p. m.", sentByMe: true }
+    { id: 18, contactId: 9, texto: "¿Vamos al cine, hoy a las 20?", fecha: "8:30 p. m.", sentByMe: false },
+    { id: 19, contactId: 9, texto: "Si, te busco.", fecha: "8:45 p. m.", sentByMe: true }
 ];
 
 export function WhatsappProvider({ children }) {
