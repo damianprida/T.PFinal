@@ -3,6 +3,21 @@ import initialContacts from './contacts';
 
 export const WhatsappContext = createContext();
 
+const CONTACTS_SEED_VERSION_KEY = 'whatsapp_contacts_seed_version';
+
+// Hash corto de contacts.jsx: si cambia un valor de la semilla (por ejemplo
+// fecha_ult_conexion o mensajes_sin_ver), se detecta y se vuelven a aplicar.
+const hashSeed = (value) => {
+    const str = JSON.stringify(value);
+    let hash = 5381;
+    for (let i = 0; i < str.length; i++) {
+        hash = ((hash << 5) + hash + str.charCodeAt(i)) | 0;
+    }
+    return String(hash >>> 0);
+};
+
+const CONTACTS_SEED_VERSION = hashSeed(initialContacts);
+
 const initialMessages = [
     { id: 1, contactId: 1, texto: "¡Hola! ¿Cómo estas?", fecha: "6:30 p. m.", sentByMe: false },
     { id: 2, contactId: 1, texto: "¡Todo bien! ¿Y vos?", fecha: "6:32 p. m.", sentByMe: true },
@@ -28,25 +43,57 @@ const initialMessages = [
 export function WhatsappProvider({ children }) {
     const [contacts, setContacts] = useState(() => {
         const saved = localStorage.getItem('whatsapp_contacts');
-        if (saved) {
-            const parsed = JSON.parse(saved);
-            
-            const missingContacts = initialContacts.filter(ic => !parsed.find(pc => String(pc.id) === String(ic.id)));
-            const combined = [...parsed, ...missingContacts];
-            return combined.map(c => {
-                const initialDef = initialContacts.find(ic => String(ic.id) === String(c.id));
-                const merged = {
-                    telefono: "+54 9 11 1234-5678",
-                    wallpaper: "4",
-                    ...c
-                };
-                if (initialDef && initialDef.avatar) {
-                    merged.avatar = initialDef.avatar;
-                }
-                return merged;
-            });
+        const savedSeedVersion = localStorage.getItem(CONTACTS_SEED_VERSION_KEY);
+        // true cuando contacts.jsx cambió desde la última carga
+        const seedChanged = savedSeedVersion !== CONTACTS_SEED_VERSION;
+
+        if (!saved) {
+            localStorage.setItem(CONTACTS_SEED_VERSION_KEY, CONTACTS_SEED_VERSION);
+            return initialContacts;
         }
-        return initialContacts;
+
+        let parsed;
+        try {
+            parsed = JSON.parse(saved);
+        } catch {
+            parsed = null;
+        }
+        if (!Array.isArray(parsed)) {
+            localStorage.setItem(CONTACTS_SEED_VERSION_KEY, CONTACTS_SEED_VERSION);
+            return initialContacts;
+        }
+
+        const missingContacts = initialContacts.filter(ic => !parsed.find(pc => String(pc.id) === String(ic.id)));
+        const combined = [...parsed, ...missingContacts];
+
+        const merged = combined.map(c => {
+            const initialDef = initialContacts.find(ic => String(ic.id) === String(c.id));
+            const mergedContact = {
+                telefono: "+54 9 11 1234-5678",
+                wallpaper: "4",
+                fecha_ult_conexion: 'En línea',
+                mensajes_sin_ver: 0,
+                ...c
+            };
+            if (initialDef) {
+                if (initialDef.avatar) {
+                    mergedContact.avatar = initialDef.avatar;
+                }
+                // Si la semilla cambió, los valores de contacts.jsx pisan los
+                // guardados en localStorage (los contactos creados por el
+                // usuario no se tocan porque no están en la semilla).
+                if (seedChanged) {
+                    Object.assign(mergedContact, initialDef);
+                }
+            }
+            return mergedContact;
+        });
+
+        localStorage.setItem(CONTACTS_SEED_VERSION_KEY, CONTACTS_SEED_VERSION);
+        if (seedChanged) {
+            localStorage.setItem('whatsapp_contacts', JSON.stringify(merged));
+        }
+        return merged;
     });
 
     const [messages, setMessages] = useState(() => {
