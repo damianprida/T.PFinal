@@ -40,8 +40,6 @@ export function WhatsappProvider({ children }) {
                     wallpaper: "4",
                     ...c
                 };
-                // Sincronización forzada: el avatar de los contactos seed siempre
-                // proviene de contacts.jsx, pisando rutas viejas guardadas en localStorage
                 if (initialDef && initialDef.avatar) {
                     merged.avatar = initialDef.avatar;
                 }
@@ -56,10 +54,6 @@ export function WhatsappProvider({ children }) {
         if (saved) {
             let parsed = JSON.parse(saved);
 
-            // Sincronización forzada: los mensajes semilla de esta lista siempre
-            // se muestran con sus textos/fechas actuales, pisando lo guardado en
-            // localStorage. Los mensajes escritos por el usuario (ids Date.now())
-            // se conservan sin cambios.
             const seedById = new Map(initialMessages.map(m => [String(m.id), m]));
             parsed = parsed.map(m => {
                 const seed = seedById.get(String(m.id));

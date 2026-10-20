@@ -4,8 +4,8 @@ const contacts = [
         id: 1,
         nombre: "Cesar",
         telefono: "+54 9 11 4567-7586",
-        fecha_ult_conexion: "Hace 2 días",
-        mensajes_sin_ver: 2,
+        fecha_ult_conexion: "Hace 15 minutos",
+        mensajes_sin_ver: 1,
         wallpaper: "4",
         avatar: "/wallpapers/Cesar.jpeg"
     },
@@ -23,7 +23,7 @@ const contacts = [
         nombre: "Carla",
         telefono: "+54 9 11 8765-7284",
         fecha_ult_conexion: "Hace 1 hora",
-        mensajes_sin_ver: 5,
+        mensajes_sin_ver: 1,
         wallpaper: "4",
         avatar: "/wallpapers/Carla.jpeg"
     },
@@ -44,7 +44,7 @@ const contacts = [
         nombre: "Laura",
         telefono: "+54 9 11 4245-2578",
         fecha_ult_conexion: "Hace 3 horas",
-        mensajes_sin_ver: 1,
+        mensajes_sin_ver: 0,
         wallpaper: "4",
         avatar: "/wallpapers/Laura.jpeg"
     },
@@ -62,7 +62,7 @@ const contacts = [
         nombre: "Marcos",
         telefono: "+54 9 11 5425-6724",
         fecha_ult_conexion: "En línea",
-        mensajes_sin_ver: 2,
+        mensajes_sin_ver: 0,
         wallpaper: "4",
         avatar: "/wallpapers/Marcos.jpeg"
     },
@@ -70,7 +70,7 @@ const contacts = [
         id: 8,
         nombre: "Sofi",
         telefono: "+54 9 11 7727-8724",
-        fecha_ult_conexion: "Ayer",
+        fecha_ult_conexion: "hace 2 horas",
         mensajes_sin_ver: 0,
         wallpaper: "4",
         avatar: "/wallpapers/Sofi.jpeg"
@@ -79,8 +79,8 @@ const contacts = [
         id: 9,
         nombre: "Xiaho",
         telefono: "+54 9 11 9743-0524",
-        fecha_ult_conexion: "Ayer",
-        mensajes_sin_ver: 1,
+        fecha_ult_conexion: "hace 5 horas",
+        mensajes_sin_ver: 0,
         wallpaper: "4",
         avatar: "/wallpapers/Xiaho.jpg"
     }
