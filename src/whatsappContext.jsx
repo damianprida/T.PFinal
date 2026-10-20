@@ -21,8 +21,8 @@ const initialMessages = [
     { id: 15, contactId: 7, texto: "Ahora te lo mando.", fecha: "9:15 a. m.", sentByMe: true },
     { id: 16, contactId: 8, texto: "Te felicito por el título!! 🎉", fecha: "8:00 a. m.", sentByMe: false },
     { id: 17, contactId: 8, texto: "Muchas gracias!! Nos vemos el finde.", fecha: "8:30 a. m.", sentByMe: true },
-    { id: 18, contactId: 9, texto: "¿Vamos al cine, hoy a las 20?", fecha: "8:30 p. m.", sentByMe: false },
-    { id: 19, contactId: 9, texto: "Si, te busco.", fecha: "8:45 p. m.", sentByMe: true }
+    { id: 18, contactId: 9, texto: "¿Vamos al cine, hoy a las 20?", fecha: "7:30 a. m.", sentByMe: false },
+    { id: 19, contactId: 9, texto: "Si, te busco.", fecha: "7:45 a. m.", sentByMe: true }
 ];
 
 export function WhatsappProvider({ children }) {
